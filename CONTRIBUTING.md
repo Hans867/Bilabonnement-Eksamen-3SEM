@@ -12,7 +12,7 @@ Reach out to either Hans867 or Frizzy1209.
 
 ## Code Conventions
 
-You are free to use all libraries. We want clear cumminication, meaning that the comments of pushes must be explaining and intuitive. And so must also the variables, functions, classes, and other code elements. We expect you to use the same styling as us, meaning colors and style. We will of course look it through and edit the styling, but if you can make it looke like out styling, you are making a great impression!
+You are free to use all libraries. We want clear cumminication, meaning that the comments of pushes must be explaining and intuitive. And so must also the variables, functions, classes, and other code elements. We expect you to use the same styling as us, meaning colors and style. We will of course look it through and edit the styling, but if you can make it looke like our styling, you are making a great impression!
 
 ## Development Process
 
@@ -20,7 +20,7 @@ Reach out to us with propistion for features and we will then return back to you
 
 ## Contribution Guidelines
 
-Create a new branch with relevant name of what you have coded, rather more branches than a big on and we will look the code through.
+Create a new branch with relevant name of what you have coded and we will look the code through.
 
 ## License and Copyright
 
