@@ -3,4 +3,4 @@
 
 ## Contribute
 
-If you wish to contribute to our project, please read our [guidance to contributes](CONTRIBUTING.md).
+If you wish to contribute to our project, please read our [Guidance to contributes](CONTRIBUTING.md).
