@@ -44,7 +44,7 @@ function CreateDamage() {
                         name="reparationCost"
                         value={newDamage.reparationCost}
                         onChange={handleChange}
-                        min="0"
+                        min=""
                     />
                 </div>
                 <div>
@@ -54,7 +54,7 @@ function CreateDamage() {
                         name="cleaningCost"
                         value={newDamage.cleaningCost}
                         onChange={handleChange}
-                        min="0"
+                        min=""
                     />
                 </div>
                 <div>
@@ -64,7 +64,7 @@ function CreateDamage() {
                         name="lateReturnCost"
                         value={newDamage.lateReturnCost}
                         onChange={handleChange}
-                        min="0"
+                        min=""
                     />
                 </div>
                 {/* Add more input fields as needed */}

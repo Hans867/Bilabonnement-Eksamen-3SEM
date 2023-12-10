@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function ListDamage() {
-    const history = useHistory();
     const [damages, setDamages] = useState([]);
 
     useEffect(() => {
@@ -12,22 +11,6 @@ function ListDamage() {
             .catch(error => console.error('Error fetching damages:', error));
     }, []);
 
-    const handleDetails = (id) => {
-        history.push(`/damage/${id}`);
-    };
-
-    const handleEdit = (id) => {
-        history.push(`/edit-damage/${id}`);
-    };
-
-    const handleDelete = (id) => {
-        history.push(`/delete-damage/${id}`);
-    };
-
-    const handleAddNew = () => {
-        history.push('/create-damage');
-    };
-
     return (
         <div>
             <h2>Damage List</h2>
@@ -35,13 +18,13 @@ function ListDamage() {
                 {damages.map(damage => (
                     <li key={damage.id}>
                         {damage.carDamage} -
-                        <button onClick={() => handleDetails(damage.id)}>Details</button>
-                        <button onClick={() => handleEdit(damage.id)}>Edit</button>
-                        <button onClick={() => handleDelete(damage.id)}>Delete</button>
+                        <Link to={`/damage/${damage.id}`}>Details</Link>
+                        <Link to={`/edit-damage/${damage.id}`}>Edit</Link>
+                        <Link to={`/delete-damage/${damage.id}`}>Delete</Link>
                     </li>
                 ))}
             </ul>
-            <button onClick={handleAddNew}>Add New Damage</button>
+            <Link to="/create-damage">Add New Damage</Link>
         </div>
     );
 }

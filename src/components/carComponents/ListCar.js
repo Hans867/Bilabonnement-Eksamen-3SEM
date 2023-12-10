@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function ListCar() {
     const [cars, setCars] = useState([]);
-    const history = useHistory();
 
     useEffect(() => {
         axios.get('http://localhost:3737/api/cars')
@@ -15,22 +14,6 @@ function ListCar() {
             .catch(error => console.error('Error fetching cars:', error));
     }, []);
 
-    const handleDetails = (id) => {
-        history.push(`/car/${id}`);
-    };
-
-    const handleEdit = (id) => {
-        history.push(`/edit-car/${id}`);
-    };
-
-    const handleDelete = (id) => {
-        history.push(`/delete-car/${id}`);
-    };
-
-    const handleAddNew = () => {
-        history.push('/create-car');
-    };
-
     return (
         <div>
             <h2>Car List</h2>
@@ -38,13 +21,13 @@ function ListCar() {
                 {cars.map(car => (
                     <li key={car.id}>
                         {car.brand} -
-                        <button onClick={() => handleDetails(car.id)}>Details</button>
-                        <button onClick={() => handleEdit(car.id)}>Edit</button>
-                        <button onClick={() => handleDelete(car.id)}>Delete</button>
+                        <Link to={`/car/${car.id}`}>Details</Link>
+                        <Link to={`/edit-car/${car.id}`}>Edit</Link>
+                        <Link to={`/delete-car/${car.id}`}>Delete</Link>
                     </li>
                 ))}
             </ul>
-            <button onClick={handleAddNew}>Add New Car</button>
+            <Link to="/create-car">Add New Car</Link>
         </div>
     );
 }

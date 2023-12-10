@@ -43,7 +43,7 @@ function CreateCar() {
                         name="purchasePrice"
                         value={newCar.purchasePrice}
                         onChange={handleChange}
-                        min="1"
+                        min=""
                     />
                 </div>
                 <div>
