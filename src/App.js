@@ -1,30 +1,31 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import Home from '.src/components';
+import Home from "./components/Home";
 
-import ListCar from './components/ListCar';
-import DetailsCar from './components/DetailsCar';
-import CreateCar from './components/CreateCar';
-import UpdateCar from './components/UpdateCar';
-import DeleteCar from './components/DeleteCar';
+import ListCar from "./components/carComponents/ListCar";
+import DetailsCar from "./components/carComponents/DetailsCar";
+import CreateCar from "./components/carComponents/CreateCar";
+import UpdateCar from "./components/carComponents/UpdateCar";
+import DeleteCar from "./components/carComponents/DeleteCar";
 
-import ListDamage from './components/ListDamage';
-import DetailsDamage from './components/DetailsDamage';
-import CreateDamage from './components/CreateDamage';
-import UpdateDamage from './components/UpdateDamage';
-import DeleteDamage from './components/DeleteDamage';
+import DetailsDamage from "./components/damageComponents/DetailsDamage";
+import CreateDamage from "./components/damageComponents/CreateDamage";
+import UpdateDamage from "./components/damageComponents/UpdateDamage";
+import DeleteDamage from "./components/damageComponents/DeleteDamage";
+import ListDamage from "./components/damageComponents/ListDamage";
 
-import ListSubscription from './components/ListSubscription';
-import DetailsSubscription from './components/DetailsSubscription';
-import CreateSubscription from './components/CreateSubscription';
-import UpdateSubscription from './components/UpdateSubscription';
-import DeleteSubscription from './components/DeleteSubscription';
+import ListSubscription from "./components/subscriptionComponents/ListSubscription";
+import DetailsSubscription from "./components/subscriptionComponents/DetailsSubscription";
+import UpdateSubscription from "./components/subscriptionComponents/UpdateSubscription";
+import DeleteSubscription from "./components/subscriptionComponents/DeleteSubscription";
+import CreateSubscription from "./components/subscriptionComponents/CreateSubscription";
 
 function App() {
   return (
       <Router>
         <Routes>
+          <Route path="/" element={<Home />} />
           {/* Car Routes */}
           <Route path="/cars" element={<ListCar />} />
           <Route path="/car/:id" element={<DetailsCar />} />
@@ -51,4 +52,3 @@ function App() {
 }
 
 export default App;
-

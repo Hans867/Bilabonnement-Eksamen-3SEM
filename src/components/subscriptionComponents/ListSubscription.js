@@ -34,7 +34,7 @@ function ListSubscriptions() {
             <ul>
                 {subscriptions.map(subscription => (
                     <li key={subscription.id}>
-                        {subscription.subscriptionType} -
+                        {subscription.subscriptionPeriode} -
                         <button onClick={() => handleDetails(subscription.id)}>Details</button>
                         <button onClick={() => handleEdit(subscription.id)}>Edit</button>
                         <button onClick={() => handleDelete(subscription.id)}>Delete</button>
