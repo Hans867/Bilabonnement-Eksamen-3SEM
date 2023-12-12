@@ -17,13 +17,11 @@ function CreateSubscription() {
         pickupCarPlace: '',
         returnCarPlace: '',
         carId: null,
-        damageId: null,
         customerId: null,
     });
 
     // Define state for cars, damages, and customers
     const [cars, setCars] = useState([]);
-    const [damages, setDamages] = useState([]);
     const [customers, setCustomers] = useState([]);
 
     useEffect(() => {
@@ -32,10 +30,6 @@ function CreateSubscription() {
             .then(response => setCars(response.data))
             .catch(error => console.error('Error fetching cars:', error));
 
-        // Fetch the list of damages
-        axios.get('http://localhost:3737/damages')
-            .then(response => setDamages(response.data))
-            .catch(error => console.error('Error fetching damages:', error));
 
         // Fetch the list of customers
         axios.get('http://localhost:3737/customers')
@@ -180,22 +174,6 @@ function CreateSubscription() {
                         {cars.map(car => (
                             <option key={car.id} value={car.id}>
                                 {car.brand} - {car.model}
-                            </option>
-                        ))}
-                    </select>
-                </div>
-                <div>
-                    <label>Select Damage:</label>
-                    <select
-                        name="damageId"
-                        value={newSubscription.damageId}
-                        onChange={handleChange}
-                        required
-                    >
-                        <option value="" disabled>Select a damage</option>
-                        {damages.map(damage => (
-                            <option key={damage.id} value={damage.id}>
-                                {damage.carDamage}
                             </option>
                         ))}
                     </select>
