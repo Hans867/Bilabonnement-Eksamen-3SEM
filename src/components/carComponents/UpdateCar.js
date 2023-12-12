@@ -12,14 +12,14 @@ function UpdateCar() {
     });
 
     useEffect(() => {
-        axios.get(`http://localhost:3737/api/cars/${id}`) // Update the endpoint to match your backend URL
+        axios.get(`http://localhost:3737/cars/${id}`) // Update the endpoint to match your backend URL
             .then(response => setCar(response.data))
             .catch(error => console.error('Error fetching car:', error));
     }, [id]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.put(`http://localhost:3737/api/cars/${id}`, car) // Update the endpoint to match your backend URL
+        axios.put(`http://localhost:3737/cars/${id}`, car) // Update the endpoint to match your backend URL
             .then(() => navigate('/cars')) // Redirect to the car list page after successful update
             .catch(error => console.error('Error updating car:', error));
     };

@@ -9,23 +9,30 @@ import CreateCar from "./components/carComponents/CreateCar";
 import UpdateCar from "./components/carComponents/UpdateCar";
 import DeleteCar from "./components/carComponents/DeleteCar";
 
+import ListDamage from "./components/damageComponents/ListDamage";
 import DetailsDamage from "./components/damageComponents/DetailsDamage";
 import CreateDamage from "./components/damageComponents/CreateDamage";
 import UpdateDamage from "./components/damageComponents/UpdateDamage";
 import DeleteDamage from "./components/damageComponents/DeleteDamage";
-import ListDamage from "./components/damageComponents/ListDamage";
 
 import ListSubscription from "./components/subscriptionComponents/ListSubscription";
 import DetailsSubscription from "./components/subscriptionComponents/DetailsSubscription";
+import CreateSubscription from "./components/subscriptionComponents/CreateSubscription";
 import UpdateSubscription from "./components/subscriptionComponents/UpdateSubscription";
 import DeleteSubscription from "./components/subscriptionComponents/DeleteSubscription";
-import CreateSubscription from "./components/subscriptionComponents/CreateSubscription";
+
+import ListCustomer from "./components/customerComponents/ListCustomer";
+import DetailsCustomer from "./components/customerComponents/DetailsCustomer";
+import CreateCustomer from "./components/customerComponents/CreateCustomer";
+import UpdateCustomer from "./components/customerComponents/UpdateCustomer";
+import DeleteCustomer from "./components/customerComponents/DeleteCustomer";
 
 function App() {
   return (
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
+
           {/* Car Routes */}
           <Route path="/cars" element={<ListCar />} />
           <Route path="/car/:id" element={<DetailsCar />} />
@@ -46,6 +53,13 @@ function App() {
           <Route path="/create-subscription" element={<CreateSubscription />} />
           <Route path="/edit-subscription/:id" element={<UpdateSubscription />} />
           <Route path="/delete-subscription/:id" element={<DeleteSubscription />} />
+
+          {/* Customer Routes */}
+          <Route path="/customers" element={<ListCustomer />} />
+          <Route path="/customer/:username" element={<DetailsCustomer />} />
+          <Route path="/create-customer" element={<CreateCustomer />} />
+          <Route path="/edit-customer/:username" element={<UpdateCustomer />} />
+          <Route path="/delete-customer/:username" element={<DeleteCustomer />} />
         </Routes>
       </Router>
   );

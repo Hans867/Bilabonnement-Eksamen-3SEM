@@ -6,7 +6,7 @@ function ListSubscriptions() {
     const [subscriptions, setSubscriptions] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:3737/api/subscriptions') // Update the endpoint to match your backend URL
+        axios.get('http://localhost:3737/subscriptions') // Update the endpoint to match your backend URL
             .then(response => setSubscriptions(response.data))
             .catch(error => console.error('Error fetching subscriptions:', error));
     }, []);

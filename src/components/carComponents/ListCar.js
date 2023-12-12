@@ -6,7 +6,7 @@ function ListCar() {
     const [cars, setCars] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:3737/api/cars')
+        axios.get('http://localhost:3737/cars')
             .then(response => {
                 console.log('Data fetched successfully:', response.data);
                 setCars(response.data);

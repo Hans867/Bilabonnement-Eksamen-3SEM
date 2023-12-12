@@ -7,7 +7,7 @@ function DetailsCar() {
     const [car, setCar] = useState(null);
 
     useEffect(() => {
-        axios.get(`http://localhost:3737/api/cars/${id}`)
+        axios.get(`http://localhost:3737/cars/${id}`)
             .then(response => {
                 setCar(response.data);
             })

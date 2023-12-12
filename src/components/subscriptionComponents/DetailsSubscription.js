@@ -7,7 +7,7 @@ function SubscriptionDetails() {
     const [subscription, setSubscription] = useState(null);
 
     useEffect(() => {
-        axios.get(`http://localhost:8080/api/subscriptions/${id}`)
+        axios.get(`http://localhost:3737/subscriptions/${id}`)
             .then(response => {
                 setSubscription(response.data);
             })

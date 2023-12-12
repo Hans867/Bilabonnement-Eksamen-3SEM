@@ -13,7 +13,7 @@ function CreateCar() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:3737/api/cars', newCar)
+        axios.post('http://localhost:3737/cars', newCar)
             .then(() => navigate('/cars'))
             .catch(error => console.error('Error creating car:', error));
     };

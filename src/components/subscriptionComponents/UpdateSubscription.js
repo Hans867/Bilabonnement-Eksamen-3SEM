@@ -16,19 +16,42 @@ function UpdateSubscription() {
         subscriptionPeriode: 0,
         subscriptionPriceEachMonth: 0,
         pickupCarPlace: '',
-        returnCarPlace: ''
-        // Add other properties based on your Subscription model
+        returnCarPlace: '',
+        carId: null,
+        damageId: null,
+        customerId: null,
     });
 
+    // Define state for cars, damages, and customers
+    const [cars, setCars] = useState([]);
+    const [damages, setDamages] = useState([]);
+    const [customers, setCustomers] = useState([]);
+
     useEffect(() => {
-        axios.get(`http://localhost:3737/api/subscriptions/${id}`)
+        // Fetch the list of cars
+        axios.get('http://localhost:3737/cars')
+            .then(response => setCars(response.data))
+            .catch(error => console.error('Error fetching cars:', error));
+
+        // Fetch the list of damages
+        axios.get('http://localhost:3737/damages')
+            .then(response => setDamages(response.data))
+            .catch(error => console.error('Error fetching damages:', error));
+
+        // Fetch the list of customers
+        axios.get('http://localhost:3737/customers')
+            .then(response => setCustomers(response.data))
+            .catch(error => console.error('Error fetching customers:', error));
+
+        // Fetch the current subscription details
+        axios.get(`http://localhost:3737/subscriptions/${id}`)
             .then(response => setSubscription(response.data))
             .catch(error => console.error('Error fetching subscription:', error));
     }, [id]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.put(`http://localhost:3737/api/subscriptions/${id}`, subscription)
+        axios.put(`http://localhost:3737/subscriptions/${id}`, subscription)
             .then(() => navigate('/subscriptions'))
             .catch(error => console.error('Error updating subscription:', error));
     };
@@ -141,6 +164,55 @@ function UpdateSubscription() {
                         onChange={handleChange}
                     />
                 </div>
+                <div>
+                    <label>Select Car:</label>
+                    <select
+                        name="carId"
+                        value={subscription.carId}
+                        onChange={handleChange}
+                        required
+                    >
+                        <option value="" disabled>Select a car</option>
+                        {cars.map(car => (
+                            <option key={car.id} value={car.id}>
+                                {car.brand} - {car.model}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+                <div>
+                    <label>Select Damage:</label>
+                    <select
+                        name="damageId"
+                        value={subscription.damageId}
+                        onChange={handleChange}
+                        required
+                    >
+                        <option value="" disabled>Select a damage</option>
+                        {damages.map(damage => (
+                            <option key={damage.id} value={damage.id}>
+                                {damage.carDamage}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+                <div>
+                    <label>Select Customer:</label>
+                    <select
+                        name="customerId"
+                        value={subscription.customerId}
+                        onChange={handleChange}
+                        required
+                    >
+                        <option value="" disabled>Select a customer</option>
+                        {customers.map(customer => (
+                            <option key={customer.username} value={customer.username}>
+                                {customer.username}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+
                 <button type="submit">Update Subscription</button>
             </form>
         </div>

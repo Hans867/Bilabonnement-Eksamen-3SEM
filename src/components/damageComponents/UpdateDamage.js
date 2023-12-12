@@ -9,18 +9,43 @@ function UpdateDamage() {
         description: '',
         cost: 0,
         repairDate: new Date().toISOString().split('T')[0],
+        carId: null,
+        subscriptionId: null,
     });
 
+    const [cars, setCars] = useState([]);
+    const [subscriptions, setSubscriptions] = useState([]);
+
     useEffect(() => {
-        axios.get(`http://localhost:3737/api/damages/${id}`) // Update the endpoint to match your backend URL
-            .then(response => setDamage(response.data))
+        // Fetch the existing damage details
+        axios.get(`http://localhost:3737/damages/${id}`)
+            .then(response => {
+                const { description, cost, repairDate, car, subscription } = response.data;
+                setDamage({
+                    description,
+                    cost,
+                    repairDate,
+                    carId: car.id,
+                    subscriptionId: subscription.id,
+                });
+            })
             .catch(error => console.error('Error fetching damage:', error));
+
+        // Fetch the list of cars
+        axios.get('http://localhost:3737/cars')
+            .then(response => setCars(response.data))
+            .catch(error => console.error('Error fetching cars:', error));
+
+        // Fetch the list of subscriptions
+        axios.get('http://localhost:3737/subscriptions')
+            .then(response => setSubscriptions(response.data))
+            .catch(error => console.error('Error fetching subscriptions:', error));
     }, [id]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.put(`http://localhost:3737/api/damages/${id}`, damage) // Update the endpoint to match your backend URL
-            .then(() => navigate('/list-damages')) // Assuming you have a route for listing damages
+        axios.put(`http://localhost:3737/damages/${id}`, damage)
+            .then(() => navigate('/list-damages'))
             .catch(error => console.error('Error updating damage:', error));
     };
 
@@ -48,7 +73,7 @@ function UpdateDamage() {
                         name="cost"
                         value={damage.cost}
                         onChange={handleChange}
-                        min="0"
+                        min=""
                     />
                 </div>
                 <div>
@@ -60,6 +85,11 @@ function UpdateDamage() {
                         onChange={handleChange}
                     />
                 </div>
+
+                {/* Hidden fields to store carId and subscriptionId */}
+                <input type="hidden" name="carId" value={damage.carId} />
+                <input type="hidden" name="subscriptionId" value={damage.subscriptionId} />
+
                 <button type="submit">Update Damage</button>
             </form>
         </div>

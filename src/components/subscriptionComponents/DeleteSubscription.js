@@ -7,7 +7,7 @@ function DeleteSubscription() {
     const navigate = useNavigate();
 
     const handleDelete = () => {
-        axios.delete(`http://localhost:3737/api/subscriptions/${id}`)
+        axios.delete(`http://localhost:3737/subscriptions/${id}`)
             .then(() => {
                 navigate('/subscriptions');
             })

@@ -6,7 +6,7 @@ function ListDamage() {
     const [damages, setDamages] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:3737/api/damages') // Update the endpoint to match your backend URL
+        axios.get('http://localhost:3737/damages') // Update the endpoint to match your backend URL
             .then(response => setDamages(response.data))
             .catch(error => console.error('Error fetching damages:', error));
     }, []);
