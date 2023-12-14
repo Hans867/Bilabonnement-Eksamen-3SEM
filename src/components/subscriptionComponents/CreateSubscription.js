@@ -27,20 +27,20 @@ function CreateSubscription() {
 
     useEffect(() => {
         // Fetch the list of cars
-        axios.get('http://localhost:3737/cars')
+        axios.get('https://bilwebapp.azurewebsites.net/cars')
             .then(response => setCars(response.data))
             .catch(error => console.error('Error fetching cars:', error));
 
 
         // Fetch the list of customers
-        axios.get('http://localhost:3737/customers')
+        axios.get('https://bilwebapp.azurewebsites.net/customers')
             .then(response => setCustomers(response.data))
             .catch(error => console.error('Error fetching customers:', error));
     }, []);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:3737/subscriptions', newSubscription)
+        axios.post('https://bilwebapp.azurewebsites.net/subscriptions', newSubscription)
             .then(() => navigate('/subscriptions'))
             .catch(error => console.error('Error creating subscription:', error));
     };

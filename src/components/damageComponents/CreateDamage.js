@@ -22,7 +22,7 @@ function CreateDamage() {
     useEffect(() => {
         if (id) {
             // Fetch the existing damage details
-            axios.get(`http://localhost:3737/damages/${id}`)
+            axios.get(`https://bilwebapp.azurewebsites.net/damages/${id}`)
                 .then(response => {
                     const { carDamage, reparationCost, cleaningCost, lateReturnCost, car, subscription } = response.data;
                     setDamage({
@@ -38,12 +38,12 @@ function CreateDamage() {
         }
 
         // Fetch the list of cars
-        axios.get('http://localhost:3737/cars')
+        axios.get('https://bilwebapp.azurewebsites.net/cars')
             .then(response => setCars(response.data))
             .catch(error => console.error('Error fetching cars:', error));
 
         // Fetch the list of subscriptions
-        axios.get('http://localhost:3737/subscriptions')
+        axios.get('https://bilwebapp.azurewebsites.net/subscriptions')
             .then(response => setSubscriptions(response.data))
             .catch(error => console.error('Error fetching subscriptions:', error));
     }, [id]);
@@ -54,8 +54,8 @@ function CreateDamage() {
         e.preventDefault();
 
         const apiEndpoint = id
-            ? `http://localhost:3737/damages/${id}` // For updating an existing damage
-            : 'http://localhost:3737/damages'; // For creating a new damage
+            ? `https://bilwebapp.azurewebsites.net/damages/${id}` // For updating an existing damage
+            : 'https://bilwebapp.azurewebsites.net/damages'; // For creating a new damage
 
         const method = id ? 'put' : 'post'; // Use POST for creating and PUT for updating
 

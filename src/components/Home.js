@@ -5,8 +5,8 @@ function Home() {
     return (
         <div>
             <div>
-                <h1>Welcome to Bilabonnement Application</h1>
-                {/* Your other content goes here */}
+                <h1>API SKULLE VÆRE HER:</h1>
+
             </div>
         </div>
     );

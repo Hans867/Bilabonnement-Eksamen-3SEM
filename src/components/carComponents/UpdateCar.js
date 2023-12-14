@@ -14,14 +14,14 @@ function UpdateCar() {
     });
 
     useEffect(() => {
-        axios.get(`http://localhost:3737/cars/${id}`)
+        axios.get(`https://bilwebapp.azurewebsites.net/cars/${id}`)
             .then(response => setCar(response.data))
             .catch(error => console.error('Error fetching car:', error));
     }, [id]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.put(`http://localhost:3737/cars/${id}`, car)
+        axios.put(`https://bilwebapp.azurewebsites.net/cars/${id}`, car)
             .then(() => navigate('/cars'))
             .catch(error => console.error('Error updating car:', error));
     };

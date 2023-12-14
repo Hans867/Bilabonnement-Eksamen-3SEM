@@ -14,7 +14,7 @@ function CreateCustomer() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:3737/customers', newCustomer)
+        axios.post('https://bilwebapp.azurewebsites.net/customers', newCustomer)
             .then(() => navigate('/customers'))
             .catch(error => console.error('Error creating customer:', error));
     };

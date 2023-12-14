@@ -7,7 +7,7 @@ function ListCustomer() {
     const [customers, setCustomers] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:3737/customers')
+        axios.get('https://bilwebapp.azurewebsites.net/customers')
             .then(response => {
                 console.log('Data fetched successfully:', response.data);
                 setCustomers(response.data);

@@ -7,7 +7,7 @@ function ListCar() {
     const [cars, setCars] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:3737/cars')
+        axios.get('https://bilwebapp.azurewebsites.net/cars')
             .then(response => {
                 console.log('Data fetched successfully:', response.data);
                 setCars(response.data);

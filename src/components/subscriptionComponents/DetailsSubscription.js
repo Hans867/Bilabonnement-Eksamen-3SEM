@@ -8,7 +8,7 @@ function SubscriptionDetails() {
     const [subscription, setSubscription] = useState(null);
 
     useEffect(() => {
-        axios.get(`http://localhost:3737/subscriptions/${id}`)
+        axios.get(`https://bilwebapp.azurewebsites.net/subscriptions/${id}`)
             .then(response => {
                 setSubscription(response.data);
             })

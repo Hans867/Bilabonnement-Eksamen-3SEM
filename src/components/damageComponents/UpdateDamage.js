@@ -20,7 +20,7 @@ function UpdateDamage() {
 
     useEffect(() => {
         // Fetch the existing damage details
-        axios.get(`http://localhost:3737/damages/${id}`)
+        axios.get(`https://bilwebapp.azurewebsites.net/damages/${id}`)
             .then(response => {
                 const { carDamage, reparationCost, cleaningCost, lateReturnCost, car, subscription } = response.data;
                 setDamage({
@@ -35,12 +35,12 @@ function UpdateDamage() {
             .catch(error => console.error('Error fetching damage:', error));
 
         // Fetch the list of cars
-        axios.get('http://localhost:3737/cars')
+        axios.get('https://bilwebapp.azurewebsites.net/cars')
             .then(response => setCars(response.data))
             .catch(error => console.error('Error fetching cars:', error));
 
         // Fetch the list of subscriptions
-        axios.get('http://localhost:3737/subscriptions')
+        axios.get('https://bilwebapp.azurewebsites.net/subscriptions')
             .then(response => setSubscriptions(response.data))
             .catch(error => console.error('Error fetching subscriptions:', error));
     }, [id]);
@@ -48,7 +48,7 @@ function UpdateDamage() {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        axios.put(`http://localhost:3737/damages/${id}`, {
+        axios.put(`https://bilwebapp.azurewebsites.net/damages/${id}`, {
             ...damage,
             car: { id: damage.carId }, // Add car property
             subscription: damage.subscription, // Keep subscription as an object
@@ -85,7 +85,7 @@ function UpdateDamage() {
                         name="reparationCost"
                         value={damage.reparationCost}
                         onChange={handleChange}
-                        min="0"
+                        min=""
                     />
                 </div>
                 <br />
@@ -96,7 +96,7 @@ function UpdateDamage() {
                         name="cleaningCost"
                         value={damage.cleaningCost}
                         onChange={handleChange}
-                        min="0"
+                        min=""
                     />
                 </div>
                 <br />
@@ -107,7 +107,7 @@ function UpdateDamage() {
                         name="lateReturnCost"
                         value={damage.lateReturnCost}
                         onChange={handleChange}
-                        min="0"
+                        min=""
                     />
                 </div>
                 <br />

@@ -15,14 +15,14 @@ function UpdateCustomer() {
     });
 
     useEffect(() => {
-        axios.get(`http://localhost:3737/customers/${username}`)
+        axios.get(`https://bilwebapp.azurewebsites.net/customers/${username}`)
             .then(response => setCustomer(response.data))
             .catch(error => console.error('Error fetching customer:', error));
     }, [username]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.put(`http://localhost:3737/customers/${username}`, customer)
+        axios.put(`https://bilwebapp.azurewebsites.net/customers/${username}`, customer)
             .then(() => navigate('/customers'))
             .catch(error => console.error('Error updating customer:', error));
     };

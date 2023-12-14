@@ -14,7 +14,7 @@ function CreateCar() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:3737/cars', newCar)
+        axios.post('https://bilwebapp.azurewebsites.net/cars', newCar)
             .then(() => navigate('/cars'))
             .catch(error => console.error('Error creating car:', error));
     };

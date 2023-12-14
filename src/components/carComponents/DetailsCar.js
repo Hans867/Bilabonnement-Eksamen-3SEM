@@ -8,7 +8,7 @@ function DetailsCar() {
     const [car, setCar] = useState(null);
 
     useEffect(() => {
-        axios.get(`http://localhost:3737/cars/${id}`)
+        axios.get(`https://bilwebapp.azurewebsites.net/cars/${id}`)
             .then(response => {
                 setCar(response.data);
             })

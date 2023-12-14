@@ -8,7 +8,7 @@ function DetailsDamage() {
     const [damage, setDamage] = useState(null);
 
     useEffect(() => {
-        axios.get(`http://localhost:3737/damages/${id}`)
+        axios.get(`https://bilwebapp.azurewebsites.net/damages/${id}`)
             .then(response => {
                 setDamage(response.data);
             })

@@ -8,7 +8,7 @@ function DetailsCustomer() {
     const [customer, setCustomer] = useState(null);
 
     useEffect(() => {
-        axios.get(`http://localhost:3737/customers/${username}`)
+        axios.get(`https://bilwebapp.azurewebsites.net/customers/${username}`)
             .then(response => {
                 setCustomer(response.data);
             })

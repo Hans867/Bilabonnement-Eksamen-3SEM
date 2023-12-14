@@ -8,7 +8,7 @@ function DeleteCar() {
     const navigate = useNavigate();
 
     const handleDelete = () => {
-        axios.delete(`http://localhost:3737/cars/${id}`) // Update the endpoint to match your backend URL
+        axios.delete(`https://bilwebapp.azurewebsites.net/cars/${id}`) // Update the endpoint to match backend URL
             .then(() => {
                 navigate('/cars'); // Redirect to the car list page after successful deletion
             })

@@ -8,7 +8,7 @@ function DeleteCustomer() {
     const navigate = useNavigate();
 
     const handleDelete = () => {
-        axios.delete(`http://localhost:3737/customers/${username}`) // Update the endpoint to match your backend URL
+        axios.delete(`https://bilwebapp.azurewebsites.net/customers/${username}`) // Update the endpoint to match your backend URL
             .then(() => {
                 navigate('/customers'); // Redirect to the customer list page after successful deletion
             })
