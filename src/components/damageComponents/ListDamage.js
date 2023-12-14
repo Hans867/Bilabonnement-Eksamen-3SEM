@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import './Damage.css';
 
 function ListDamage() {
     const [damages, setDamages] = useState([]);
@@ -12,7 +13,7 @@ function ListDamage() {
     }, []);
 
     return (
-        <div>
+        <div className="list-damages">
             <h2>Damage List</h2>
             <ul>
                 {damages.map(damage => (
@@ -20,11 +21,11 @@ function ListDamage() {
                         {damage.carDamage} -
                         <Link to={`/damage/${damage.id}`}>Details</Link>
                         <Link to={`/edit-damage/${damage.id}`}>Edit</Link>
-                        <Link to={`/delete-damage/${damage.id}`}>Delete</Link>
+                        <Link id="delete-damage" to={`/delete-damage/${damage.id}`}>Delete</Link>
                     </li>
                 ))}
             </ul>
-            <Link to="/create-damage">Add New Damage</Link>
+            <Link id="create-damage-link" to="/create-damage">Add New Damage</Link>
         </div>
     );
 }

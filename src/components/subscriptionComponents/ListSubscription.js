@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import './Subscription.css'
 
 function ListSubscriptions() {
     const [subscriptions, setSubscriptions] = useState([]);
@@ -12,19 +13,19 @@ function ListSubscriptions() {
     }, []);
 
     return (
-        <div>
+        <div className="subscription-list-container">
             <h2>Subscription List</h2>
             <ul>
                 {subscriptions.map(subscription => (
-                    <li key={subscription.id}>
+                    <li  key={subscription.id}>
                         {subscription.subscriptionPeriode} -
                         <Link to={`/subscription/${subscription.id}`}>Details</Link>
                         <Link to={`/edit-subscription/${subscription.id}`}>Edit</Link>
-                        <Link to={`/delete-subscription/${subscription.id}`}>Delete</Link>
+                        <Link className="delete-link" to={`/delete-subscription/${subscription.id}`}>Delete</Link>
                     </li>
                 ))}
             </ul>
-            <Link to="/create-subscription">Add New Subscription</Link>
+            <Link to="/create-subscription" className="add-link">Add New Subscription</Link>
         </div>
     );
 }

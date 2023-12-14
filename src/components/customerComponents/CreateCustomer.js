@@ -25,7 +25,7 @@ function CreateCustomer() {
     };
 
     return (
-        <div>
+        <div className="create-customer">
             <h2>Create New Customer</h2>
             <form onSubmit={handleSubmit}>
                 <div>
@@ -37,6 +37,7 @@ function CreateCustomer() {
                         required
                     />
                 </div>
+                <br/>
                 <div>
                     <label>Password:</label>
                     <input
@@ -47,6 +48,7 @@ function CreateCustomer() {
                         required
                     />
                 </div>
+                <br/>
                 <div>
                     <label>Email:</label>
                     <input
@@ -57,6 +59,7 @@ function CreateCustomer() {
                         required
                     />
                 </div>
+                <br/>
                 <div>
                     <label>First Name:</label>
                     <input
@@ -66,6 +69,7 @@ function CreateCustomer() {
                         required
                     />
                 </div>
+                <br/>
                 <div>
                     <label>Last Name:</label>
                     <input
@@ -75,6 +79,7 @@ function CreateCustomer() {
                         required
                     />
                 </div>
+                <br/>
                 <button type="submit">Create Customer</button>
             </form>
         </div>

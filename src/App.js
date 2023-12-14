@@ -1,6 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
+import Navbar from "./components/Navbar";
+
 import Home from "./components/Home";
 
 import ListCar from "./components/carComponents/ListCar";
@@ -30,6 +32,7 @@ import DeleteCustomer from "./components/customerComponents/DeleteCustomer";
 function App() {
   return (
       <Router>
+        <Navbar></Navbar>
         <Routes>
           <Route path="/" element={<Home />} />
 
@@ -56,7 +59,7 @@ function App() {
 
           {/* Customer Routes */}
           <Route path="/customers" element={<ListCustomer />} />
-          <Route path="/customer/:username" element={<DetailsCustomer />} />
+          <Route path="/customers/:username" element={<DetailsCustomer />} />
           <Route path="/create-customer" element={<CreateCustomer />} />
           <Route path="/edit-customer/:username" element={<UpdateCustomer />} />
           <Route path="/delete-customer/:username" element={<DeleteCustomer />} />

@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
+import './Damage.css';
 
 function UpdateDamage() {
     const { id } = useParams();
     const navigate = useNavigate();
     const [damage, setDamage] = useState({
-        description: '',
-        cost: 0,
-        repairDate: new Date().toISOString().split('T')[0],
-        carId: null,
-        subscriptionId: null,
+        carDamage: '',
+        reparationCost: 0,
+        cleaningCost: 0,
+        lateReturnCost: 0,
+        carId: '',
+        subscription: null, // Change to an object
     });
 
     const [cars, setCars] = useState([]);
@@ -20,13 +22,14 @@ function UpdateDamage() {
         // Fetch the existing damage details
         axios.get(`http://localhost:3737/damages/${id}`)
             .then(response => {
-                const { description, cost, repairDate, car, subscription } = response.data;
+                const { carDamage, reparationCost, cleaningCost, lateReturnCost, car, subscription } = response.data;
                 setDamage({
-                    description,
-                    cost,
-                    repairDate,
+                    carDamage,
+                    reparationCost,
+                    cleaningCost,
+                    lateReturnCost,
                     carId: car.id,
-                    subscriptionId: subscription.id,
+                    subscription: subscription, // Change to an object
                 });
             })
             .catch(error => console.error('Error fetching damage:', error));
@@ -44,52 +47,110 @@ function UpdateDamage() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.put(`http://localhost:3737/damages/${id}`, damage)
-            .then(() => navigate('/list-damages'))
-            .catch(error => console.error('Error updating damage:', error));
-    };
 
+        axios.put(`http://localhost:3737/damages/${id}`, {
+            ...damage,
+            car: { id: damage.carId }, // Add car property
+            subscription: damage.subscription, // Keep subscription as an object
+        })
+            .then(() => navigate('/damages'))
+            .catch((error) => console.error('Error updating damage:', error));
+    }
     const handleChange = (e) => {
         const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
-        setDamage({ ...damage, [e.target.name]: value });
+        setDamage((prevDamage) => ({
+            ...prevDamage,
+            [e.target.name]: value === null ? '' : value,
+        }));
     };
 
     return (
-        <div>
+        <div className="update-damage">
             <h2>Edit Damage</h2>
             <form onSubmit={handleSubmit}>
                 <div>
-                    <label>Description:</label>
+                    <label>Car Damage:</label>
                     <input
-                        name="description"
-                        value={damage.description}
+                        name="carDamage"
+                        value={damage.carDamage}
                         onChange={handleChange}
+                        required
                     />
                 </div>
+                <br />
                 <div>
-                    <label>Cost:</label>
+                    <label>Reparation Cost:</label>
                     <input
                         type="number"
-                        name="cost"
-                        value={damage.cost}
+                        name="reparationCost"
+                        value={damage.reparationCost}
                         onChange={handleChange}
-                        min=""
+                        min="0"
                     />
                 </div>
+                <br />
                 <div>
-                    <label>Repair Date:</label>
+                    <label>Cleaning Cost:</label>
                     <input
-                        type="date"
-                        name="repairDate"
-                        value={damage.repairDate}
+                        type="number"
+                        name="cleaningCost"
+                        value={damage.cleaningCost}
                         onChange={handleChange}
+                        min="0"
                     />
                 </div>
-
-                {/* Hidden fields to store carId and subscriptionId */}
-                <input type="hidden" name="carId" value={damage.carId} />
-                <input type="hidden" name="subscriptionId" value={damage.subscriptionId} />
-
+                <br />
+                <div>
+                    <label>Late Return Cost:</label>
+                    <input
+                        type="number"
+                        name="lateReturnCost"
+                        value={damage.lateReturnCost}
+                        onChange={handleChange}
+                        min="0"
+                    />
+                </div>
+                <br />
+                <div>
+                    <label>Select Car:</label>
+                    <select
+                        name="carId"
+                        value={damage.carId}
+                        onChange={handleChange}
+                        required
+                    >
+                        <option value="" disabled>Select a car</option>
+                        {cars.map(car => (
+                            <option key={car.id} value={car.id}>
+                                {car.brand}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+                <br />
+                <div>
+                    <label>Select Subscription:</label>
+                    <select
+                        name="subscription"
+                        value={damage.subscription ? String(damage.subscription.id) : ''}
+                        onChange={(e) => {
+                            const selectedSub = subscriptions.find(sub => sub.id === parseInt(e.target.value, 10));
+                            setDamage((prevDamage) => ({
+                                ...prevDamage,
+                                subscription: selectedSub,
+                            }));
+                        }}
+                        required
+                    >
+                        <option value="" disabled>Select a subscription</option>
+                        {subscriptions.map(subscription => (
+                            <option key={subscription.id} value={String(subscription.id)}>
+                                {`${subscription.customer.firstName} ${subscription.customer.lastName} - ${subscription.id}`}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+                <br />
                 <button type="submit">Update Damage</button>
             </form>
         </div>

@@ -1,24 +1,24 @@
-// Import the necessary dependencies
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import './Customer.css';
 
 function DetailsCustomer() {
-    const { username } = useParams(); // Change 'id' to 'username'
+    const { username } = useParams();
     const [customer, setCustomer] = useState(null);
 
     useEffect(() => {
-        axios.get(`http://localhost:3737/customers/${username}`) // Change 'id' to 'username'
+        axios.get(`http://localhost:3737/customers/${username}`)
             .then(response => {
                 setCustomer(response.data);
             })
             .catch(error => console.error('Error fetching customer:', error));
-    }, [username]); // Change 'id' to 'username'
+    }, [username]);
 
     if (!customer) return <div>Loading...</div>;
 
     return (
-        <div>
+        <div className="details-customer">
             <h2>{customer.username}</h2>
             <p>Email: {customer.email}</p>
             <p>First Name: {customer.firstName}</p>
@@ -28,4 +28,3 @@ function DetailsCustomer() {
 }
 
 export default DetailsCustomer;
-

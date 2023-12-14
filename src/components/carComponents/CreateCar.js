@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import './Car.css'
 
 function CreateCar() {
     const navigate = useNavigate();
     const [newCar, setNewCar] = useState({
         brand: '',
         purchasePrice: 0,
-        carFuel: ''
-
+        carFuel: '',
+        imageUrl: '',
     });
 
     const handleSubmit = (e) => {
@@ -24,7 +25,7 @@ function CreateCar() {
     };
 
     return (
-        <div>
+        <div className="create-car">
             <h2>Create New Car</h2>
             <form onSubmit={handleSubmit}>
                 <div>
@@ -36,6 +37,7 @@ function CreateCar() {
                         required
                     />
                 </div>
+                <br/>
                 <div>
                     <label>Purchase Price:</label>
                     <input
@@ -46,6 +48,7 @@ function CreateCar() {
                         min=""
                     />
                 </div>
+                <br/>
                 <div>
                     <label>Car Fuel:</label>
                     <input
@@ -55,6 +58,17 @@ function CreateCar() {
                         required
                     />
                 </div>
+                <br/>
+                <div>
+                    <label>Image URL:</label>
+                    <input
+                        name="imageUrl"
+                        value={newCar.imageUrl}
+                        onChange={handleChange}
+                        required
+                    />
+                </div>
+                <br/>
                 <button type="submit">Create Car</button>
             </form>
         </div>

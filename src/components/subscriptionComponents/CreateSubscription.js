@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import './Subscription.css'
 
 function CreateSubscription() {
     const navigate = useNavigate();
@@ -49,7 +50,7 @@ function CreateSubscription() {
         setNewSubscription({ ...newSubscription, [e.target.name]: value });
     };
     return (
-        <div>
+        <div className="create-subscription">
             <h2>Create New Subscription</h2>
             <form onSubmit={handleSubmit}>
                 <div>
@@ -62,6 +63,7 @@ function CreateSubscription() {
                         required
                     />
                 </div>
+                <br/>
                 <div>
                     <label>Start Subscription Date:</label>
                     <input
@@ -72,6 +74,7 @@ function CreateSubscription() {
                         required
                     />
                 </div>
+                <br/>
                 <div>
                     <label>End Subscription Date:</label>
                     <input
@@ -82,6 +85,7 @@ function CreateSubscription() {
                         required
                     />
                 </div>
+                <br/>
                 <div>
                     <label>Delivery Date:</label>
                     <input
@@ -92,6 +96,7 @@ function CreateSubscription() {
                         required
                     />
                 </div>
+                <br/>
                 <div>
                     <label>Km Driven Subscription Start:</label>
                     <input
@@ -102,6 +107,7 @@ function CreateSubscription() {
                         required
                     />
                 </div>
+                <br/>
                 <div>
                     <label>Subscription Driven Km:</label>
                     <input
@@ -112,6 +118,7 @@ function CreateSubscription() {
                         required
                     />
                 </div>
+                <br/>
                 <div>
                     <label>Agreed Km Subscription:</label>
                     <input
@@ -122,6 +129,7 @@ function CreateSubscription() {
                         required
                     />
                 </div>
+                <br/>
                 <div>
                     <label>Subscription Periode:</label>
                     <input
@@ -132,6 +140,7 @@ function CreateSubscription() {
                         required
                     />
                 </div>
+                <br/>
                 <div>
                     <label>Subscription Price Each Month:</label>
                     <input
@@ -142,6 +151,7 @@ function CreateSubscription() {
                         required
                     />
                 </div>
+                <br/>
                 <div>
                     <label>Pickup Car Place:</label>
                     <input
@@ -152,6 +162,7 @@ function CreateSubscription() {
                         required
                     />
                 </div>
+                <br/>
                 <div>
                     <label>Return Car Place:</label>
                     <input
@@ -162,6 +173,7 @@ function CreateSubscription() {
                         required
                     />
                 </div>
+                <br/>
                 <div>
                     <label>Select Car:</label>
                     <select
@@ -173,11 +185,12 @@ function CreateSubscription() {
                         <option value="" disabled>Select a car</option>
                         {cars.map(car => (
                             <option key={car.id} value={car.id}>
-                                {car.brand} - {car.model}
+                                {car.brand}
                             </option>
                         ))}
                     </select>
                 </div>
+                <br/>
                 <div>
                     <label>Select Customer:</label>
                     <select
@@ -194,6 +207,7 @@ function CreateSubscription() {
                         ))}
                     </select>
                 </div>
+                <br/>
 
                 <button type="submit">Create Subscription</button>
             </form>

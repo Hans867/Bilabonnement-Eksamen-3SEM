@@ -1,13 +1,14 @@
 import React from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
+import './Customer.css'
 
 function DeleteCustomer() {
-    const { id } = useParams();
+    const { username } = useParams();
     const navigate = useNavigate();
 
     const handleDelete = () => {
-        axios.delete(`http://localhost:3737/customers/${id}`) // Update the endpoint to match your backend URL
+        axios.delete(`http://localhost:3737/customers/${username}`) // Update the endpoint to match your backend URL
             .then(() => {
                 navigate('/customers'); // Redirect to the customer list page after successful deletion
             })
@@ -19,11 +20,11 @@ function DeleteCustomer() {
     };
 
     return (
-        <div>
+        <div className="delete-customer">
             <h2>Delete Customer</h2>
             <p>Are you sure you want to delete this customer?</p>
             <button onClick={handleDelete}>Yes, Delete</button>
-            <button onClick={handleCancel}>No, Cancel</button>
+            <button className="cancel-button" onClick={handleCancel}>No, Cancel</button>
         </div>
     );
 }

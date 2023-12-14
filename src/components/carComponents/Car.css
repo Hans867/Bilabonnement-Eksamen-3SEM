@@ -1,0 +1,127 @@
+/* car.css */
+
+.Car-container {
+    margin: 5px 80px 80px;
+
+}
+
+.Car-container img {
+    width: 400px; /* Set your preferred fixed width */
+    height: 350px; /* Set your preferred fixed height */
+    object-fit: cover; /* Ensure the image covers the entire container */
+    border-radius: 8px; /* Add border radius if needed */
+}
+
+.Car-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.Car-item {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.Car-item h3 {
+    margin-top: 0;
+}
+
+.Car-item img {
+    width: 400px; /* Set your preferred fixed width */
+    height: 350px; /* Set your preferred fixed height */
+    object-fit: cover; /* Ensure the image covers the entire container */
+    border-radius: 8px; /* Add border radius if needed */
+}
+
+.Car-links {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+.Car-links a{
+    text-decoration: none;
+    color: black;
+}
+
+.Car-links a:hover{
+    color: #2e9bd2;
+}
+
+#delete:hover {
+    color: red;
+}
+
+#create-car-link {
+    text-decoration: none;
+    color: #28a745;
+}
+
+#create-car-link:hover {
+    color: #26ec4f;
+}
+
+.create-car {
+    margin-left: 20px;
+}
+
+.create-car button:hover {
+    color: #28a745;
+}
+
+.delete-car-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.delete-car-container h2 {
+    color: #dc3545; /* Red color for the heading */
+    margin-bottom: 20px;
+}
+
+.delete-car-container p {
+    margin: 20px 0;
+}
+
+.delete-car-container button {
+    background-color: #28a745; /* Green color for the buttons */
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.delete-car-container #complete-delete:hover {
+    background-color: #dc3545; /* Red color on hover for "Yes, Delete" button */
+}
+
+.delete-car-container #cancel-delete {
+    background-color: #007BFF; /* Blue color for the "No, Cancel" button */
+}
+
+.delete-car-container #cancel-delete:hover {
+    background-color: #0056b3; /* Darker blue on hover for "No, Cancel" button */
+}
+
+.update-car {
+    margin-left: 20px;
+}
+
+.update-car button:hover {
+    color: #28a745;
+}
+

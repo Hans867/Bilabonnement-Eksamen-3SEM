@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
+import './Car.css'
 
 function UpdateCar() {
     const { id } = useParams();
@@ -8,19 +9,20 @@ function UpdateCar() {
     const [car, setCar] = useState({
         brand: '',
         purchasePrice: 0,
-        carFuel: ''
+        carFuel: '',
+        imageUrl: '', // Add imageUrl to the state
     });
 
     useEffect(() => {
-        axios.get(`http://localhost:3737/cars/${id}`) // Update the endpoint to match your backend URL
+        axios.get(`http://localhost:3737/cars/${id}`)
             .then(response => setCar(response.data))
             .catch(error => console.error('Error fetching car:', error));
     }, [id]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.put(`http://localhost:3737/cars/${id}`, car) // Update the endpoint to match your backend URL
-            .then(() => navigate('/cars')) // Redirect to the car list page after successful update
+        axios.put(`http://localhost:3737/cars/${id}`, car)
+            .then(() => navigate('/cars'))
             .catch(error => console.error('Error updating car:', error));
     };
 
@@ -30,7 +32,7 @@ function UpdateCar() {
     };
 
     return (
-        <div>
+        <div className="update-car">
             <h2>Edit Car</h2>
             <form onSubmit={handleSubmit}>
                 <div>
@@ -42,6 +44,7 @@ function UpdateCar() {
                         required
                     />
                 </div>
+                <br/>
                 <div>
                     <label>Purchase Price:</label>
                     <input
@@ -52,6 +55,7 @@ function UpdateCar() {
                         min="1"
                     />
                 </div>
+                <br/>
                 <div>
                     <label>Car Fuel:</label>
                     <input
@@ -61,10 +65,20 @@ function UpdateCar() {
                         required
                     />
                 </div>
+                <br/>
+                <div>
+                    <label>Image URL:</label>
+                    <input
+                        name="imageUrl"
+                        value={car.imageUrl}
+                        onChange={handleChange}
+                        required
+                    />
+                </div>
+                <br/>
                 <button type="submit">Update Car</button>
             </form>
         </div>
-
     );
 }
 

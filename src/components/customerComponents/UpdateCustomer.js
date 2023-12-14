@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
+import './Customer.css';
 
 function UpdateCustomer() {
     const { username } = useParams();
@@ -32,8 +33,9 @@ function UpdateCustomer() {
     };
 
     return (
-        <div>
+        <div className="update-customer">
             <h2>Edit Customer</h2>
+            <br/>
             <form onSubmit={handleSubmit}>
                 <div>
                     <label>Username:</label>
@@ -45,6 +47,7 @@ function UpdateCustomer() {
                         readOnly // Make the username read-only
                     />
                 </div>
+                <br/>
                 <div>
                     <label>Password:</label>
                     <input
@@ -55,6 +58,7 @@ function UpdateCustomer() {
                         required
                     />
                 </div>
+                <br/>
                 <div>
                     <label>Email:</label>
                     <input
@@ -65,6 +69,7 @@ function UpdateCustomer() {
                         required
                     />
                 </div>
+                <br/>
                 <div>
                     <label>First Name:</label>
                     <input
@@ -74,6 +79,7 @@ function UpdateCustomer() {
                         required
                     />
                 </div>
+                <br/>
                 <div>
                     <label>Last Name:</label>
                     <input
@@ -83,7 +89,8 @@ function UpdateCustomer() {
                         required
                     />
                 </div>
-                <button type="submit">Update Customer</button>
+                <br/>
+                <button id="update-customer-button" type="submit">Update Customer</button>
             </form>
         </div>
     );
